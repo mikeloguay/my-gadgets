@@ -3,7 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35027.167
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyGadgets.Api", "MyGadgets.Api\MyGadgets.Api.csproj", "{EDFBBE43-5DFC-4551-A78E-B8EC6B23A10C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyGadgets.Api", "MyGadgets.Api\MyGadgets.Api.csproj", "{EDFBBE43-5DFC-4551-A78E-B8EC6B23A10C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyGadgets.Domain", "MyGadgets.Domain\MyGadgets.Domain.csproj", "{629A8D6B-450D-4A6C-9737-FE2739007241}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyGadgets.Infrastructure", "MyGadgets.Infrastructure\MyGadgets.Infrastructure.csproj", "{F29F001B-F4EB-452A-9C01-8F1D60C302F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyGadgets.Application", "MyGadgets.Application\MyGadgets.Application.csproj", "{14CFBA5F-A06C-4839-8913-1405DAF12294}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DFBC361F-3F7E-45A7-A508-65DE421EB2A0}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +26,18 @@ Global
 		{EDFBBE43-5DFC-4551-A78E-B8EC6B23A10C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EDFBBE43-5DFC-4551-A78E-B8EC6B23A10C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EDFBBE43-5DFC-4551-A78E-B8EC6B23A10C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{629A8D6B-450D-4A6C-9737-FE2739007241}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{629A8D6B-450D-4A6C-9737-FE2739007241}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{629A8D6B-450D-4A6C-9737-FE2739007241}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{629A8D6B-450D-4A6C-9737-FE2739007241}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F29F001B-F4EB-452A-9C01-8F1D60C302F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F29F001B-F4EB-452A-9C01-8F1D60C302F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F29F001B-F4EB-452A-9C01-8F1D60C302F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F29F001B-F4EB-452A-9C01-8F1D60C302F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14CFBA5F-A06C-4839-8913-1405DAF12294}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14CFBA5F-A06C-4839-8913-1405DAF12294}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14CFBA5F-A06C-4839-8913-1405DAF12294}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14CFBA5F-A06C-4839-8913-1405DAF12294}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
