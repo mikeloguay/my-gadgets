@@ -1,11 +1,28 @@
-﻿using MyGadgets.Domain.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using MyGadgets.Domain.Entities;
 using MyGadgets.Domain.Repositories;
+using MyGadgets.Infrastructure.Data;
 
 namespace MyGadgets.Infrastructure;
 public class GadgetRepository : IGadgetRepository
 {
-    public async Task<List<Gadget>> GetAll()
+    private readonly AppDbContext _dbContext;
+
+    public GadgetRepository(AppDbContext dbContext)
     {
-        throw new NotImplementedException();
+        _dbContext = dbContext;
+    }
+
+    public async Task SaveChanges()
+    {
+        await _dbContext.SaveChangesAsync();
+    }
+
+    public async Task<List<Gadget>> GetAll() => await _dbContext.Gadgets.ToListAsync();
+    
+
+    public async Task Add(Gadget gadget)
+    {
+        await _dbContext.Gadgets.AddAsync(gadget);
     }
 }

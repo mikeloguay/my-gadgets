@@ -20,5 +20,14 @@ namespace MyGadgets.Api.Controllers
 
         [HttpGet]
         public async Task<IEnumerable<Gadget>> Get() => await _gadgetRepository.GetAll();
+
+        [HttpPost]
+        public async Task<IActionResult> Post([FromBody] Gadget gadget)
+        {
+            await _gadgetRepository.Add(gadget);
+            await _gadgetRepository.SaveChanges();
+
+            return Ok();
+        }
     }
 }
