@@ -1,6 +1,11 @@
+using Microsoft.EntityFrameworkCore;
 using MyGadgets.Infrastructure;
+using MyGadgets.Infrastructure.Data;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<AppDbContext>(options =>
+            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddRepositories();
 
