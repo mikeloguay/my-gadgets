@@ -7,4 +7,5 @@ public interface IGadgetRepository
 
     Task<List<Gadget>> GetAll();
     Task Add(Gadget gadget);
+    void Update(Gadget gadget);
 }

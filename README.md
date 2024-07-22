@@ -10,13 +10,28 @@ The main objetive of this app is to play around with some technical concepts in 
 - Automated testing
 - CI/CD
 
-## Functional features
+Simplicity is one of the main design principles, but making sure the separation of concerns and maintainability is also optimized.
+
+## Functional requirements
 
 ### Supported
 
+- CRUD operations on a gadget (simple entity with no relations)
+
 ### Planned
 
-- CRUD operations on a gadget (simple entity with no relations)
 - Basic details: name, notes, photo
 - Manage list of brands
 - Manage type of gadget
+- Send alert when the warranty of a gadget is close to expire
+
+## Non-functional requirements
+
+### Supported
+
+- Automatic migrations
+
+### Planned
+
+- Global exeption handling via `IExceptionHandler` (with HTTP status codes mapping)
+- Validation of both DTOs and entities with fluent validation

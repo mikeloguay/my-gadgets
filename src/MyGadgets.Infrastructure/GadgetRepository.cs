@@ -25,4 +25,9 @@ public class GadgetRepository : IGadgetRepository
     {
         await _dbContext.Gadgets.AddAsync(gadget);
     }
+
+    public void Update(Gadget gadget)
+    {
+        _dbContext.Gadgets.Update(gadget);
+    }
 }

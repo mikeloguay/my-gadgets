@@ -29,5 +29,14 @@ namespace MyGadgets.Api.Controllers
 
             return Ok();
         }
+
+        [HttpPut]
+        public async Task<IActionResult> Put([FromBody] Gadget gadget)
+        {
+            _gadgetRepository.Update(gadget);
+            await _gadgetRepository.SaveChanges();
+
+            return Ok();
+        }
     }
 }
