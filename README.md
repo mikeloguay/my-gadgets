@@ -1,4 +1,4 @@
-# my-gadgets
+# my-gadgets (work in progress)
 
 This is a simple application to manage personal home gadgets (laptop, phone, washing-machine...). It stores its brand, date of purchase, warranty, serial numbers, manuals...
 
