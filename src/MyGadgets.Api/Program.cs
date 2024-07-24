@@ -1,36 +1,52 @@
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
+using MyGadgets.Api.Dtos;
 using MyGadgets.Api.Validators;
-using MyGadgets.Domain.Entities;
 using MyGadgets.Infrastructure;
 using MyGadgets.Infrastructure.Data;
 using SharpGrip.FluentValidation.AutoValidation.Mvc.Extensions;
+using System.Text.Json.Serialization;
+using MyGadgets.Api.Exceptions;
 
-var builder = WebApplication.CreateBuilder(args);
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<AppDbContext>(options =>
-            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+        builder.Services.AddDbContext<AppDbContext>(options =>
+                    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddRepositories();
+        builder.Services.AddRepositories();
 
-builder.Services.AddRouting(options => options.LowercaseUrls = true);
-builder.Services.AddControllers();
+        builder.Services.AddRouting(options => options.LowercaseUrls = true);
+        builder.Services.AddControllers().AddJsonOptions(options =>
+        {
+            options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+            options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault;
+        });
 
-builder.Services.AddScoped<IValidator<Gadget>, GadgetValidator>();
-builder.Services.AddFluentValidationAutoValidation();
+        builder.Services.AddScoped<IValidator<CreateGadgetDto>, CreateGadgetDtoValidator>();
+        builder.Services.AddScoped<IValidator<UpdateGadgetDto>, UpdateGadgetDtoValidator>();
+        builder.Services.AddFluentValidationAutoValidation();
 
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+        builder.Services.AddEndpointsApiExplorer();
+        builder.Services.AddSwaggerGen();
 
-var app = builder.Build();
+        builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+        builder.Services.AddProblemDetails();
 
-app.UseSwagger();
-app.UseSwaggerUI();
+        var app = builder.Build();
 
-app.UseHttpsRedirection();
+        app.UseSwagger();
+        app.UseSwaggerUI();
 
-app.UseAuthorization();
+        app.UseHttpsRedirection();
 
-app.MapControllers();
+        app.UseAuthorization();
 
-app.Run();
+        app.MapControllers();
+
+        app.Run();
+    }
+}

@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using MyGadgets.Api.Dtos;
 using MyGadgets.Domain.Entities;
 using MyGadgets.Domain.Repositories;
 
@@ -8,32 +9,43 @@ namespace MyGadgets.Api.Controllers
     [Route("[controller]")]
     public class GadgetsController : ControllerBase
     {
-        private readonly ILogger<GadgetsController> _logger;
         private readonly IGadgetRepository _gadgetRepository;
 
-        public GadgetsController(ILogger<GadgetsController> logger,
+        public GadgetsController(
             IGadgetRepository gadgetRepository)
         {
-            _logger = logger;
             _gadgetRepository = gadgetRepository;
         }
 
         [HttpGet]
-        public async Task<IEnumerable<Gadget>> Get() => await _gadgetRepository.GetAll();
+        public async Task<IEnumerable<GadgetDto>> GetAll()
+        {
+            List<Gadget> gadgets = await _gadgetRepository
+                .GetAll();
+            return gadgets.Select(GadgetDto.FromEntity);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<GadgetDto>> Get([FromRoute] int id)
+        {
+            Gadget gadget = await _gadgetRepository
+                .GetById(id);
+            return GadgetDto.FromEntity(gadget);
+        }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] Gadget gadget)
+        public async Task<IActionResult> Post([FromBody] CreateGadgetDto dto)
         {
-            await _gadgetRepository.Add(gadget);
+            await _gadgetRepository.Add(dto.ToGadget());
             await _gadgetRepository.SaveChanges();
 
             return Ok();
         }
 
         [HttpPut]
-        public async Task<IActionResult> Put([FromBody] Gadget gadget)
+        public async Task<IActionResult> Put([FromBody] UpdateGadgetDto dto)
         {
-            _gadgetRepository.Update(gadget);
+            _gadgetRepository.Update(dto.ToGadget());
             await _gadgetRepository.SaveChanges();
 
             return Ok();

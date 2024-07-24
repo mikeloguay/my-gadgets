@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MyGadgets.Domain.Entities;
+using MyGadgets.Domain.Exceptions;
 using MyGadgets.Domain.Repositories;
 using MyGadgets.Infrastructure.Data;
 
@@ -19,7 +20,13 @@ public class GadgetRepository : IGadgetRepository
     }
 
     public async Task<List<Gadget>> GetAll() => await _dbContext.Gadgets.ToListAsync();
-    
+
+    public async Task<Gadget> GetById(int id)
+    {
+        var gadget = await _dbContext.Gadgets.SingleOrDefaultAsync(g => g.Id == id);
+
+        return gadget is null ? throw new EntityNotFoundException(nameof(Gadget), id) : gadget;
+    }
 
     public async Task Add(Gadget gadget)
     {
