@@ -50,5 +50,14 @@ namespace MyGadgets.Api.Controllers
 
             return Ok();
         }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> Delete([FromRoute] int id)
+        {
+            await _gadgetRepository.DeleteById(id);
+            await _gadgetRepository.SaveChanges();
+
+            return Ok();
+        }
     }
 }

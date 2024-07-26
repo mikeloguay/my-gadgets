@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using MyGadgets.Domain.Entities;
 using MyGadgets.Domain.Exceptions;
 using MyGadgets.Domain.Repositories;
@@ -8,10 +9,13 @@ namespace MyGadgets.Infrastructure;
 public class GadgetRepository : IGadgetRepository
 {
     private readonly AppDbContext _dbContext;
+    private readonly ILogger<GadgetRepository> _logger;
 
-    public GadgetRepository(AppDbContext dbContext)
+    public GadgetRepository(AppDbContext dbContext,
+        ILogger<GadgetRepository> logger)
     {
         _dbContext = dbContext;
+        _logger = logger;
     }
 
     public async Task SaveChanges()
@@ -36,5 +40,18 @@ public class GadgetRepository : IGadgetRepository
     public void Update(Gadget gadget)
     {
         _dbContext.Gadgets.Update(gadget);
+    }
+
+    public async Task DeleteById(int id)
+    {
+        var gadget = await _dbContext.Gadgets.SingleOrDefaultAsync(g => g.Id == id);
+
+        if (gadget is null)
+        {
+            _logger.LogWarning("Gadget with Id={id} was tried to be deleted, but it did not exist", id);
+            return;
+        }
+
+        _dbContext.Gadgets.Remove(gadget);
     }
 }

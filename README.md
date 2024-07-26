@@ -35,3 +35,7 @@ Simplicity is one of the main design principles, but making sure the separation 
 
 - Global exeption handling via `IExceptionHandler` (with HTTP status codes mapping)
 - Validation of both DTOs and entities with fluent validation
+- Serilog semantic logging
+- GitHub actions to build + test
+- Deploy to Azure via Docker repository, using settings per environment
+- Unit of Work with multiple repositories

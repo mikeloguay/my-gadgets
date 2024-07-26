@@ -1,5 +1,5 @@
 ﻿namespace MyGadgets.Domain.Entities;
-public class Gadget
+public class Gadget : IAgregateRoot
 {
     public int Id { get; set; }
     public required string Name { get; set; }

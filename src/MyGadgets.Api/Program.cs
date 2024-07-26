@@ -46,6 +46,7 @@ internal class Program
         app.UseAuthorization();
 
         app.MapControllers();
+        app.UseExceptionHandler();
 
         app.Run();
     }
