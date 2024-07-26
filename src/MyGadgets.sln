@@ -17,7 +17,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyGadgets.Api.Test", "MyGadgets.Api.Test\MyGadgets.Api.Test.csproj", "{607819BD-7066-4668-8622-31C121315600}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyGadgets.Api.Test", "MyGadgets.Api.Test\MyGadgets.Api.Test.csproj", "{607819BD-7066-4668-8622-31C121315600}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyGadgets.Domain.Test", "MyGadgets.Domain.Test\MyGadgets.Domain.Test.csproj", "{68102EB4-6BE1-4805-B38D-17D6E5221DD9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{607819BD-7066-4668-8622-31C121315600}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{607819BD-7066-4668-8622-31C121315600}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{607819BD-7066-4668-8622-31C121315600}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68102EB4-6BE1-4805-B38D-17D6E5221DD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68102EB4-6BE1-4805-B38D-17D6E5221DD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68102EB4-6BE1-4805-B38D-17D6E5221DD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68102EB4-6BE1-4805-B38D-17D6E5221DD9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
